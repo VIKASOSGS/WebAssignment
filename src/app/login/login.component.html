@@ -1,0 +1,114 @@
+<div style="height: 20px;"></div>
+<div class="container">
+
+  <div class="card">
+    <div class="card-body">
+
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+          <h4 class="text-center">Login to a world of opportunities!</h4>
+          <div style="height: 20px;"></div>
+
+          <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+              <form [formGroup]="LoginForm" (ngSubmit)="SubmitForm()">
+
+                <div class="row mx-2" style="background-color: #f1f0f0;" >
+
+                  <div class="col-4 rounded py-1 border " [style]=" userRole==='customer' ? 'background-color: #007bff;' : '' ">
+                    <div class="row justify-content-center  ">
+                      <a (click)="changeUserRole('customer')" [style]="userRole==='customer' ? 'font-weight: 600;color: #ffffff;' : 'font-weight: 600;' "> Customer </a>
+                    </div>
+                  </div>
+
+                  <div class="col-4 rounded py-1 border" [style]=" userRole==='admin' ? 'background-color: #007bff;' : '' ">
+                    <div class="row justify-content-center  ">
+                      <a (click)="changeUserRole('admin')" [style]="userRole==='admin' ? 'font-weight: 600;color: #ffffff;' : 'font-weight: 600;' "> Admin </a>
+                    </div>
+                  </div>
+
+                  <div class="col-4 rounded py-1 border" [style]=" userRole==='retailer' ? 'background-color: #007bff;' : '' ">
+                    <div class="row justify-content-center  ">
+                      <a (click)="changeUserRole('retailer')" [style]="userRole==='retailer' ? 'font-weight: 600;color: #ffffff;' : 'font-weight: 600;' "> Retailer </a>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div style="height: 20px;"></div>
+
+                <div class="form-group">
+                  <label for="Email" style="font-weight: 600;">Email Address</label>
+                  <input type="email" class="form-control" id="Email" placeholder="Enter Email Address"
+                    formControlName="Email" autocomplete="off">
+                </div>
+                <div *ngIf="UserDoesNotExist===true">
+                  <p class="text text-danger">User Not Found</p>
+                </div>
+
+                <div *ngIf="!Email2?.valid &&  (Email2?.dirty || Email2?.touched) " class="text-danger">
+                  <div *ngIf="Email2!.errors!.required">
+                    Email is required
+                  </div>
+                  <div *ngIf="Email2!.errors!.pattern">
+                    Invalid Email
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="Password" style="font-weight: 600;">Password</label>
+                  <input type="password" class="form-control" id="Password" placeholder="Enter Password"
+                    formControlName="Password" autocomplete="off">
+                </div>
+
+                <div *ngIf="InvalidPassword===true">
+                  <p class="text text-danger">Invalid Password</p>
+                </div>
+
+                <div *ngIf="!Password2?.valid &&  (Password2?.dirty || Password2?.touched) " class="text-danger">
+                  <div *ngIf="Password2!.errors!.required">
+                    Password is required
+                  </div>
+                  <div *ngIf="Password2!.errors!.pattern">
+                    Invalid Password
+                  </div>
+                </div>
+
+                <div class="row justify-content-center" *ngIf="IsLoading; else buttondiv">
+                  <img style="width: 100px;" src="./assets/ezgif.com-gif-maker.gif" alt="">
+                </div>
+
+                <ng-template #buttondiv>
+                  <button type="submit" class="btn LTIButton py-2" style="width: 100%; "
+                    [disabled]="!LoginForm.valid">Login</button>
+                </ng-template>
+
+                <div class="form-group form-check py-2">
+                  <input type="checkbox" class="form-check-input" id="RememberMe">
+                  <label class="form-check-label" for="RememberMe">Remember Me</label>
+                </div>
+              </form>
+
+              <div style="background-color: #f1f1f1;" class="p-4">
+                <div class="row">
+                  <div class="col-4"><a href="" class="btn btn-danger">Cancel</a></div>
+                  <div class="col-2"></div>
+                  <div class="col-6  my-auto"><span>Forgot <a href="">password?</a> </span> </div>
+                </div>
+
+              </div>
+            </div>
+            <div class="col-lg-3"></div>
+          </div>
+
+
+
+        </div>
+        <div class="col-lg-2"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div style="height: 20px;"></div>

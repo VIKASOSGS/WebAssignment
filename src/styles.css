@@ -1,1 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+.LTIBackgroundColor{
+   background-color: #00018a;
+}
+
+.LTIButton{
+   background-color: #00018a;
+    color: #ffffff;
+}
